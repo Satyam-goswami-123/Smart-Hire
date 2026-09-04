@@ -139,7 +139,10 @@ export default function Hero({ onGetStarted }) {
           <button
             className="hero__btn hero__btn--secondary"
             id="btn-view-demo"
-            onClick={(e) => { createRipple(e); if (onGetStarted) onGetStarted(); }}
+            onClick={(e) => {
+              createRipple(e)
+              window.open('https://smart-hire-nine-zeta.vercel.app/', '_blank', 'noopener,noreferrer')
+            }}
           >
             View Demo
             <Play size={14} strokeWidth={2} />
