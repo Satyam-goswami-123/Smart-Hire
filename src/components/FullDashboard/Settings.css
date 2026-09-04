@@ -1,0 +1,259 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 32px;
+}
+
+.settings__header {
+  margin-bottom: 8px;
+}
+
+.settings__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.5px;
+}
+
+.settings__subtitle {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.settings__layout {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.settings__sidebar {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.settings__tab {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4B5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.settings__tab:hover {
+  background-color: #F3F4F6;
+  color: #111827;
+}
+
+.settings__tab--active {
+  background-color: #EFF6FF;
+  color: #2563EB;
+}
+
+.settings__tab--active:hover {
+  background-color: #EFF6FF;
+  color: #2563EB;
+}
+
+.settings__content {
+  flex: 1;
+}
+
+.settings__panel {
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 32px;
+}
+
+.settings__panel h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.settings__panel p {
+  margin: 0 0 24px 0;
+  font-size: 14px;
+  color: #6B7280;
+}
+
+.settings__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings__form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.settings__form-group input {
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.settings__form-group input:focus {
+  border-color: #2563EB;
+}
+
+.settings__form-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.settings__btn-primary {
+  background-color: #0B57D0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.settings__btn-primary:hover {
+  background-color: #0842a0;
+}
+
+.settings__btn-outline {
+  background-color: #ffffff;
+  border: 1px solid #E5E7EB;
+  color: #374151;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.settings__btn-outline:hover {
+  background-color: #F9FAFB;
+}
+
+/* Toggles */
+.settings__toggle-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.settings__toggle-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.settings__toggle-group h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.settings__toggle-group span {
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.settings__toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.settings__toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.settings__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #E5E7EB;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.settings__slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input:checked + .settings__slider {
+  background-color: #10B981;
+}
+
+input:checked + .settings__slider:before {
+  transform: translateX(20px);
+}
+
+/* Plan Card */
+.settings__plan-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #2563EB;
+  background-color: #EFF6FF;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.settings__plan-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1E3A8A;
+}
+
+.settings__plan-info span {
+  font-size: 14px;
+  color: #2563EB;
+}

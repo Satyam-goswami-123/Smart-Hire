@@ -1,0 +1,23 @@
+.fulldashboard {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FAFAFA;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #111827;
+  overflow: hidden;
+}
+
+.fulldashboard__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.fulldashboard__content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 48px;
+}

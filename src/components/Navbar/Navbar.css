@@ -1,0 +1,238 @@
+/* ===== NAVBAR ===== */
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  background: transparent;
+  transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+  animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.navbar--scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.navbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+/* ===== LOGO ===== */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar__logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navbar__logo-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.3px;
+}
+
+/* ===== NAV LINKS ===== */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__link {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.2s ease;
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar__link:hover {
+  color: var(--black);
+}
+
+.navbar__link:hover::after,
+.navbar__link--active::after {
+  width: 100%;
+}
+
+.navbar__link--active {
+  color: var(--black);
+}
+
+/* ===== ACTIONS ===== */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.navbar__login {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.navbar__login:hover {
+  color: var(--black);
+  background: rgba(0,0,0,0.04);
+}
+
+.navbar__cta {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--black);
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 9px;
+  transition: var(--transition);
+  letter-spacing: -0.1px;
+}
+
+.navbar__cta:hover {
+  background: #1f2937;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+/* ===== HAMBURGER ===== */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.navbar__hamburger:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--black);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .navbar__links {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 0 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .navbar__links--open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .navbar__links li {
+    width: 100%;
+  }
+
+  .navbar__link {
+    display: block;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+
+  .navbar__link::after {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__actions {
+    gap: 2px;
+  }
+
+  .navbar__login {
+    padding: 8px 10px;
+    font-size: 13.5px;
+  }
+
+  .navbar__cta {
+    padding: 8px 14px;
+    font-size: 13.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__inner {
+    padding: 0 16px;
+  }
+}

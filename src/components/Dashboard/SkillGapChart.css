@@ -1,0 +1,30 @@
+.sgc {
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sgc__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: -0.1px;
+}
+
+.sgc__chart-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sgc__svg {
+  width: 148px;
+  height: 148px;
+}

@@ -1,0 +1,207 @@
+/* ===== DASHBOARD FLOAT ANIMATION ===== */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ===== WRAPPER ===== */
+.db-wrapper {
+  width: 100%;
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 16px;
+  animation: float 6s ease-in-out infinite;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+}
+
+.db-wrapper:hover {
+  animation-play-state: paused;
+  transform: translateY(-6px);
+}
+
+/* ===== BROWSER CHROME ===== */
+.db-browser {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 8px 32px rgba(0, 0, 0, 0.10),
+    0 24px 64px rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  overflow: hidden;
+}
+
+.db-browser__topbar {
+  background: #F9FAFB;
+  border-bottom: 1px solid #E5E7EB;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.db-browser__dots {
+  display: flex;
+  gap: 6px;
+}
+
+.db-browser__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.db-browser__dot--red {
+  background: #FF5F57;
+}
+
+.db-browser__dot--yellow {
+  background: #FEBC2E;
+}
+
+.db-browser__dot--green {
+  background: #28C840;
+}
+
+/* ===== APP INSIDE BROWSER ===== */
+.db-app {
+  display: flex;
+  flex-direction: column;
+  background: #F9FAFB;
+}
+
+/* App header bar */
+.db-app__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #fff;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.db-app__logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.db-app__logo-icon {
+  width: 22px;
+  height: 22px;
+  background: var(--primary);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.db-app__logo-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.2px;
+}
+
+.db-app__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #9CA3AF;
+}
+
+/* App body: sidebar + main */
+.db-app__body {
+  display: flex;
+  min-height: 320px;
+}
+
+/* ===== SIDEBAR ===== */
+.db-sidebar {
+  width: 90px;
+  background: #fff;
+  border-right: 1px solid #E5E7EB;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.db-sidebar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 6px;
+  border-radius: 8px;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: background 0.18s ease;
+  color: #9CA3AF;
+}
+
+.db-sidebar__item span {
+  font-size: 9px;
+  font-weight: 500;
+  color: inherit;
+}
+
+.db-sidebar__item:hover {
+  background: #F3F4F6;
+  color: var(--black);
+}
+
+.db-sidebar__item--active {
+  background: #EEF2FF;
+  color: var(--primary);
+}
+
+.db-sidebar__item--active span {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ===== MAIN CONTENT ===== */
+.db-main {
+  flex: 1;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* Cards row: resume match + skill gap */
+.db-cards-row {
+  display: flex;
+  gap: 12px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .db-cards-row {
+    flex-direction: column;
+  }
+
+  .db-sidebar {
+    width: 60px;
+  }
+
+  .db-sidebar__item span {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .db-wrapper {
+    padding: 0 8px;
+  }
+}

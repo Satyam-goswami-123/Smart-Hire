@@ -1,0 +1,212 @@
+.history {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 24px;
+}
+
+.history__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.history__controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.history__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 250px;
+}
+
+.history__search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: #111827;
+  width: 100%;
+}
+
+.history__search input::placeholder {
+  color: #9CA3AF;
+}
+
+.history__filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4B5563;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.history__filter-btn:hover {
+  background: #F9FAFB;
+}
+
+.history__tabs {
+  display: flex;
+  gap: 32px;
+  border-bottom: 1px solid #E5E7EB;
+  padding-bottom: 2px;
+}
+
+.history__tab {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6B7280;
+  padding: 0 0 12px 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.history__tab:hover {
+  color: #111827;
+}
+
+.history__tab--active {
+  color: #2563EB;
+  font-weight: 600;
+}
+
+.history__tab--active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #2563EB;
+  border-radius: 2px 2px 0 0;
+}
+
+/* Table */
+.history__table-container {
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.history__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history__table th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6B7280;
+  padding: 16px 24px;
+  background-color: #F9FAFB;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.history__table td {
+  padding: 20px 24px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.history__table tr:last-child td {
+  border-bottom: none;
+}
+
+.history__cell-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.history__cell-company {
+  font-size: 14px;
+  color: #4B5563;
+}
+
+.history__cell-date {
+  font-size: 14px;
+  color: #6B7280;
+}
+
+.history__cell-score {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.history__score-bar {
+  width: 60px;
+  height: 6px;
+  background-color: #E5E7EB;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.history__score-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.history__status-pill {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 16px;
+  display: inline-flex;
+}
+
+.history__status-pill--success {
+  background-color: #ECFDF5;
+  color: #059669;
+}
+
+.history__status-pill--warning {
+  background-color: #FFFBEB;
+  color: #D97706;
+}
+
+.history__action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history__action-btn:hover {
+  background: #F3F4F6;
+}
