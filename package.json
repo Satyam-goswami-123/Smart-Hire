@@ -1,4 +1,12 @@
 {
+  "name": "smarthire-ai",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd backend && npm install && node server.js",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && node server.js"
+  },
   "dependencies": {
     "@mlc-ai/web-llm": "^0.2.85"
   }
