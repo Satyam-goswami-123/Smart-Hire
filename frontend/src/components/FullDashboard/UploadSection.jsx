@@ -1,5 +1,4 @@
 ﻿import React, { useState, useRef, useEffect } from 'react'
-import { useWebLLM } from '../../hooks/useWebLLM'
 import { FileText, Check, Trash2, ArrowRight, UploadCloud, ClipboardPaste, Upload, Loader2 } from 'lucide-react'
 import './UploadSection.css'
 
@@ -14,8 +13,7 @@ export default function UploadSection({ onAnalyze, onResumeChange, onJdChange })
   const [tempJdText, setTempJdText] = useState('')
   
   const [isAnalyzing, setIsAnalyzing] = useState(false)
-  const [aiStatus, setAiStatus] = useState('')
-  const { analyzeResume, modelStatus, isLoading: llmLoading, loadModel } = useWebLLM()
+
   
   const resumeInputRef = useRef(null)
   const jdInputRef = useRef(null)
@@ -101,63 +99,30 @@ export default function UploadSection({ onAnalyze, onResumeChange, onJdChange })
     setIsPastingJD(false)
   }
 
-  // --- Analyze Handler (Web-LLM powered) ---
+    // --- Analyze Handler ---
   const handleAnalyze = async () => {
     setIsAnalyzing(true)
-    setAiStatus('Extracting text from PDF...')
-
     try {
-      // Step 1: Send files to backend for PDF text extraction only
       const formData = new FormData()
-      if (resumeFile && resumeFile.raw) formData.append('resume', resumeFile.raw)
-      if (jdFile && jdFile.raw) formData.append('jdFile', jdFile.raw)
-      else if (jdText) formData.append('jdText', jdText)
+      if (resumeFile && resumeFile.raw) formData.append("resume", resumeFile.raw)
+      if (jdFile && jdFile.raw) formData.append("jdFile", jdFile.raw)
+      else if (jdText) formData.append("jdText", jdText)
 
-      const extractRes = await fetch('http://localhost:5001/api/extract', {
-        method: 'POST',
-        body: formData
+      const response = await fetch("http://localhost:5001/api/analyze", {
+        method: "POST",
+        body: formData,
       })
-      const extracted = await extractRes.json()
-      if (!extractRes.ok) throw new Error(extracted.error || 'Text extraction failed')
-
-      // Step 2: Load Web-LLM model if not already loaded
-      setAiStatus('Loading AI model (first time may take ~1 min)...')
-      await loadModel()
-
-      // Step 3: Run AI analysis locally in the browser
-      setAiStatus('Analyzing with AI...')
-      const aiResult = await analyzeResume(
-        extracted.resumeText,
-        extracted.jdText,
-        (partial) => setAiStatus('AI thinking...')
-      )
+      const result = await response.json()
+      if (!response.ok) throw new Error(result.error || "Analysis failed")
 
       if (onAnalyze) {
-        onAnalyze({
-          resume: resumeFile,
-          jd: jdFile || { text: jdText },
-          analysisResult: aiResult
-        })
+        onAnalyze({ resume: resumeFile, jd: jdFile || { text: jdText }, analysisResult: result.data })
       }
     } catch (error) {
-      console.error('Analysis error:', error)
-      // Fallback to rule-based backend if Web-LLM fails
-      try {
-        setAiStatus('AI unavailable — using rule-based analysis...')
-        const formData = new FormData()
-        if (resumeFile && resumeFile.raw) formData.append('resume', resumeFile.raw)
-        if (jdFile && jdFile.raw) formData.append('jdFile', jdFile.raw)
-        else if (jdText) formData.append('jdText', jdText)
-        const fallbackRes = await fetch('http://localhost:5001/api/analyze', { method: 'POST', body: formData })
-        const fallbackData = await fallbackRes.json()
-        if (!fallbackRes.ok) throw new Error(fallbackData.error)
-        if (onAnalyze) onAnalyze({ resume: resumeFile, jd: jdFile || { text: jdText }, analysisResult: fallbackData.data })
-      } catch (fallbackErr) {
-        alert(`Analysis failed: ${fallbackErr.message}\n\nMake sure backend is running on port 5001 and you uploaded a valid PDF.`)
-      }
+      console.error("Analysis error:", error)
+      alert(`Analysis failed: ${error.message}\n\nMake sure the backend is running on port 5001 and you uploaded a valid PDF.`)
     } finally {
       setIsAnalyzing(false)
-      setAiStatus('')
     }
   }
 
@@ -352,5 +317,6 @@ export default function UploadSection({ onAnalyze, onResumeChange, onJdChange })
     </div>
   )
 }
+
 
 
