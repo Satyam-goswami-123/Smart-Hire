@@ -45,10 +45,10 @@ export default function Navbar({ onGetStarted, onWebLLMTest }) {
         <div className="navbar__actions">
           <button 
             className="navbar__login" 
-            style={{ border: 'none', background: 'transparent', cursor: 'pointer' }}
+            style={{ border: 'none', background: 'transparent', cursor: 'pointer', color: '#93C5FD', fontWeight: 500 }}
             onClick={onWebLLMTest}
           >
-            Test WebLLM
+            AI Assistant
           </button>
           <button 
             className="navbar__cta" 
